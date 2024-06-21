@@ -6,6 +6,7 @@ function App() {
   // state variable
   // inc
   // dec
+  var a = 10;
   let [cart, setCart] = useState({});
   function increaseQuantity(product) {
     const newCart = { ...cart };
