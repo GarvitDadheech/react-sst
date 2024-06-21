@@ -1,14 +1,17 @@
 import './ProductCard.css';
 import AddToCart from '../AddToCart/AddToCart';
+import CartContext from "../../context/CartContext";
 import { useRef, useState } from 'react';
-import productlogo from './assets/product.jpeg';
-function ProductCard({ product, cart, increaseQuantity, decreaseQuantity }) {
-  var a = 10;
-  a = a + 1;
+import productlogo from '../../assets/product.jpeg';
+import { useContext } from 'react';
+function ProductCard({ product }) {
+  // var a = 10;
+  // a = a + 1;
+  const { cart, increaseQuantity, decreaseQuantity } = useContext(CartContext);
   let pRef = useRef(0);
   let iRef = useRef(0);
   let oRef = useRef(0);
-//   let [inputV, setInputV] = useState('Class');
+  let [inputV, setInputV] = useState('Class');
 
   // setInput(value);
   function printTitle() {

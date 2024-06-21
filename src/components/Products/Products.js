@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard/ProductCard";
 import Effect from "../Effect/Effect";
 import { useState, useEffect } from "react";
-import useWindowSize from "../hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize";
 function Products({cart, increaseQuantity, decreaseQuantity}) {
     
 let [products, setProducts] = useState([]);
@@ -18,7 +18,6 @@ fetch("https://602fc537a1e9d20017af105e.mockapi.io/api/v1/products").then(
 })
 }, [])
 
-
 return (
     <div>
         <div><Effect /></div>
@@ -30,5 +29,4 @@ return (
     </div>
     )
 }
-
 export default Products;
