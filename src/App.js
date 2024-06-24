@@ -2,11 +2,11 @@ import './App.css';
 import Products from './components/Products/Products';
 import { useState } from 'react';
 import CartContext from './context/CartContext';
+import React from 'react';
 function App() {
   // state variable
   // inc
   // dec
-  var a = 10;
   let [cart, setCart] = useState({});
   function increaseQuantity(product) {
     const newCart = { ...cart };

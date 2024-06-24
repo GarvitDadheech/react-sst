@@ -2,6 +2,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import Effect from "../Effect/Effect";
 import { useState, useEffect } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
+import React from "react";
 function Products({cart, increaseQuantity, decreaseQuantity}) {
     
 let [products, setProducts] = useState([]);
