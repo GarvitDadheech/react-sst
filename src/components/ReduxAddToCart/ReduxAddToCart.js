@@ -1,12 +1,18 @@
-
+import { useSelector,useDispatch } from "react-redux";
 function AddToCart({ product }) {
+    //useSelector -> to consume the 
+    let dispatch = useDispatch();
     function increase() {
-        //useSelector -> to consume the state
         //dispatch({type: "increase", payload: product})
+        dispatch({type: "ADD_TO_CART", payload: product});
     }
     function decrease() {
         //dispatch({type: "decrease", payload: product})
+        dispatch({type: "REMOVE_FROM_CART", payload: product});
     }
+    let state = useSelector((state) => {
+        return state.cart;
+    });
     const quantity = cart[product.id] ? cart[product.id].quantity : 0;
     if (quantity === 0) {
         return (
