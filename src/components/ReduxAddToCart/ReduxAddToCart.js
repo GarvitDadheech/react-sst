@@ -10,10 +10,9 @@ function AddToCart({ product }) {
         //dispatch({type: "decrease", payload: product})
         dispatch({type: "REMOVE_FROM_CART", payload: product});
     }
-    let state = useSelector((state) => {
-        return state.cart;
+    let quantity = useSelector((state) => {
+        return state.items[product.id]?.quantity || 0;
     });
-    const quantity = cart[product.id] ? cart[product.id].quantity : 0;
     if (quantity === 0) {
         return (
             <div>

@@ -1,4 +1,6 @@
+
 import {createStore} from "redux";
+import {omit} from "lodash";
 function cartReducer(state={items:{}},action) {
     switch(action.type) {
         case "ADD_TO_CART": {
@@ -40,6 +42,12 @@ function cartReducer(state={items:{}},action) {
                             quantity: state.items[products.id].quantity - 1
                         }
                     }
+                }
+            }
+            else {
+                return {
+                    ...state,
+                    items: omit(state.items, products.id)
                 }
             }
         }
