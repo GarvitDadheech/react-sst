@@ -29,7 +29,19 @@ function cartReducer(state={items:{}},action) {
             }
         }
         case "REMOVE_FROM_CART": {
-
+            const products = action.payload;
+            if(state.items[products.id].quantity > 1) {
+                return {
+                    ...state,
+                    items: {
+                        ...state.items,
+                        [products.id]: {
+                            ...state.items[products.id],
+                            quantity: state.items[products.id].quantity - 1
+                        }
+                    }
+                }
+            }
         }
         default: return state;
     }
