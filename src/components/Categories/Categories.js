@@ -1,22 +1,61 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
+
 function Categories() {
   const [categories, setCategories] = useState([]);
+  const [uniqueCategories, setUniqueCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   useEffect(() => {
-    fetch("https://api.thecatapi.com/v1/categories").then((response) => {
-      return response.json();
-    }).then((res) => {
-      setCategories(res);
-    })
+    fetch("https://602fc537a1e9d20017af105e.mockapi.io/api/v1/products")
+      .then((response) => response.json())
+      .then((res) => {
+        setCategories(res);
+      })
+      .catch((error) => console.error("Error fetching categories:", error));
   }, []);
+
+  useEffect(() => {
+    const unique = [...new Set(categories.map((item) => item.category))];
+    setUniqueCategories(unique);
+  }, [categories]);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      const filtered = categories.filter(
+        (item) => item.category === selectedCategory
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts([]);
+    }
+  }, [selectedCategory, categories]);
+
   return (
     <div>
       <h1>Categories</h1>
-      {categories.map((item) => {
-        return(
-          <div key={item.id}>{item.name}</div>
-        )
-      })}
+      {uniqueCategories.map((category, index) => (
+        <div
+          key={index}
+          onClick={() => setSelectedCategory(category)}
+          style={{ cursor: "pointer", margin: "5px", padding: "5px", border: "1px solid black" }}
+        >
+          {category}
+        </div>
+      ))}
+
+      <h2>Products</h2>
+      {selectedCategory ? (
+        filteredProducts.map((product) => (
+          <div key={product.id}>
+            <h3>{product.title}</h3>
+          </div>
+        ))
+      ) : (
+        <p>Please select a category to see products of selected Category</p>
+      )}
     </div>
   );
 }
+
 export default Categories;
