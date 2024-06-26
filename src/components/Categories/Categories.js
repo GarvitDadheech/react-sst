@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ProductCard from "../ProductCard/ProductCard.js";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -44,16 +45,16 @@ function Categories() {
         </div>
       ))}
 
-      <h2>Products</h2>
-      {selectedCategory ? (
-        filteredProducts.map((product) => (
-          <div key={product.id}>
-            <h3>{product.title}</h3>
-          </div>
-        ))
-      ) : (
-        <p>Please select a category to see products of selected Category</p>
-      )}
+      <div>
+        <h2>Products</h2>
+        {selectedCategory ? (
+          filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <p>Please select a category to see products.</p>
+        )}
+      </div>
     </div>
   );
 }

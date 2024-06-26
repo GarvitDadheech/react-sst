@@ -33,13 +33,15 @@ function App() {
     }
     setCart(newCart);
   }
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <CartContext.Provider value = {{cart,increaseQuantity,decreaseQuantity}}>
       <div className="App">
-        <Products />
+        <Categories onSelectCategory={setSelectedCategory} />
+       
         <Cart/>
-        <Categories/>
+      
       </div>
     </CartContext.Provider>
   );
