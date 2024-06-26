@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import { addToCart } from '../store';
+import { removeFromCart } from '../store';
 function ReduxAddToCart({ product }) {
     const dispatch = useDispatch();
     const quantity = useSelector((state) => state.items[product.id]?.quantity || 0);
@@ -10,7 +11,7 @@ function ReduxAddToCart({ product }) {
     };
 
     const decrease = () => {
-        dispatch({ type: 'REMOVE_FROM_CART', payload: product });
+        dispatch(removeFromCart(product));
     };
 
     return (

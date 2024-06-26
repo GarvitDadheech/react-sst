@@ -9,6 +9,12 @@ export function addToCart(product) {
         payload: product
     }
 }
+export function removeFromCart(product) {
+    return {
+        type: REMOVE_FROM_CART,
+        payload: product
+    }
+}
 function cartReducer(state={items:{}},action) {
     switch(action.type) {
         case "ADD_TO_CART": {
