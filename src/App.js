@@ -4,6 +4,7 @@ import { useState } from 'react';
 import CartContext from './context/CartContext';
 import React from 'react';
 import Cart from './components/Cart/Cart';
+import Categories from './components/Categories/Categories';
 function App() {
   // state variable
   // inc
@@ -38,6 +39,7 @@ function App() {
       <div className="App">
         <Products />
         <Cart/>
+        <Categories/>
       </div>
     </CartContext.Provider>
   );
