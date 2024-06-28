@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
-import { addToCart } from '../store';
-import { removeFromCart } from '../store';
+import { addToCart } from '../store/Cart';
+import { removeFromCart } from '../store/Cart';
 function ReduxAddToCart({ product }) {
     const dispatch = useDispatch();
     const quantity = useSelector((state) => state.items[product.id]?.quantity || 0);

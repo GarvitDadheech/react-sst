@@ -68,6 +68,6 @@ function cartReducer(state={items:{}},action) {
         default: return state;
     }
 }
-const store = createStore(cartReducer);
-export default store;
+
+export default cartReducer;
 //action is an object that has two keys - type and payload(products in our case)
